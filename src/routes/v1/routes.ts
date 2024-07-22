@@ -25,7 +25,7 @@ const models: TsoaRoute.Models = {
         "additionalProperties": false,
     },
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-    "UserCreationParams": {
+    "UserRequest": {
         "dataType": "refObject",
         "properties": {
             "name": {"dataType":"string"},
@@ -40,16 +40,6 @@ const models: TsoaRoute.Models = {
         "properties": {
             "name": {"dataType":"string"},
             "email": {"dataType":"string"},
-        },
-        "additionalProperties": false,
-    },
-    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-    "UserRequest": {
-        "dataType": "refObject",
-        "properties": {
-            "name": {"dataType":"string"},
-            "email": {"dataType":"string"},
-            "file": {"dataType":"string"},
         },
         "additionalProperties": false,
     },
@@ -78,7 +68,7 @@ export function RegisterRoutes(app: Router,opts?:{multer?:ReturnType<typeof mult
 
             async function UserController_createNewUser(request: ExRequest, response: ExResponse, next: any) {
             const args: Record<string, TsoaRoute.ParameterSchema> = {
-                    requestBody: {"in":"body","name":"requestBody","required":true,"ref":"UserCreationParams"},
+                    requestBody: {"in":"body","name":"requestBody","required":true,"ref":"UserRequest"},
             };
 
             // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa

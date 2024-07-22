@@ -27,7 +27,7 @@
 				"type": "object",
 				"additionalProperties": false
 			},
-			"UserCreationParams": {
+			"UserRequest": {
 				"properties": {
 					"name": {
 						"type": "string"
@@ -48,21 +48,6 @@
 						"type": "string"
 					},
 					"email": {
-						"type": "string"
-					}
-				},
-				"type": "object",
-				"additionalProperties": false
-			},
-			"UserRequest": {
-				"properties": {
-					"name": {
-						"type": "string"
-					},
-					"email": {
-						"type": "string"
-					},
-					"file": {
 						"type": "string"
 					}
 				},
@@ -108,7 +93,7 @@
 					"content": {
 						"application/json": {
 							"schema": {
-								"$ref": "#/components/schemas/UserCreationParams"
+								"$ref": "#/components/schemas/UserRequest"
 							}
 						}
 					}
