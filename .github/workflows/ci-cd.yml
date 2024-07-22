@@ -32,9 +32,9 @@ jobs:
 
       - name: Run tests
         env:
-          AWS_REGOIN: ${{ secrets.AWS_REGION }}
+          AWS_REGION: ${{ secrets.AWS_REGION }}
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRETKEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           MONGODB_URL: ${{ secrets.MONGODB_URL }}
         run: yarn test
 
@@ -93,7 +93,7 @@ jobs:
           port: 22
           script: |
             echo "NODE_ENV=production" > /home/ubuntu/UploadsFile/API_Test/build/.env
-            echo "PORT=your_port_number" >> /home/ubuntu/UploadsFile/build/configs.env.production
+            echo "PORT=your_port_number" >> /home/ubuntu/UploadsFile/API_Test/build/configs.env.production
             echo "DATABASE_URL=your_database_url" >> /home/ubuntu/UploadsFile/API_Test/build/configs.env.production
 
       - name: Install Dependencies and Restart Application
