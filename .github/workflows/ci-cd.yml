@@ -29,7 +29,6 @@ jobs:
         run: yarn install
 
       - name: Run build
-        working-directory: "./"
         run: yarn build
 
       - name: Run tests
