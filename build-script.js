@@ -20,7 +20,9 @@ esbuild.build({
     'dotenv',
     'yup',
     '@tsoa/runtime',
-    'tsoa'
+    'tsoa',
+    '@aws-sdk/client-s3',
+    'multer'
   ],  // Mark Node.js packages as external
   loader: {
     '.ts': 'ts',

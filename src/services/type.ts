@@ -17,6 +17,7 @@ export const UserModel = model<UserServicetype>('User', UserSchema);
 export interface UserServicePrams {
     name?: string;
     email?: string;
+    
 }
 
 

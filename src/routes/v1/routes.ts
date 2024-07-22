@@ -25,11 +25,31 @@ const models: TsoaRoute.Models = {
         "additionalProperties": false,
     },
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "UserCreationParams": {
+        "dataType": "refObject",
+        "properties": {
+            "name": {"dataType":"string"},
+            "email": {"dataType":"string"},
+            "file": {"dataType":"string"},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
     "UserServicePrams": {
         "dataType": "refObject",
         "properties": {
             "name": {"dataType":"string"},
             "email": {"dataType":"string"},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "UserRequest": {
+        "dataType": "refObject",
+        "properties": {
+            "name": {"dataType":"string"},
+            "email": {"dataType":"string"},
+            "file": {"dataType":"string"},
         },
         "additionalProperties": false,
     },
@@ -58,7 +78,7 @@ export function RegisterRoutes(app: Router,opts?:{multer?:ReturnType<typeof mult
 
             async function UserController_createNewUser(request: ExRequest, response: ExResponse, next: any) {
             const args: Record<string, TsoaRoute.ParameterSchema> = {
-                    requestBody: {"in":"body","name":"requestBody","required":true,"ref":"UserServicePrams"},
+                    requestBody: {"in":"body","name":"requestBody","required":true,"ref":"UserCreationParams"},
             };
 
             // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
@@ -245,6 +265,8 @@ export function RegisterRoutes(app: Router,opts?:{multer?:ReturnType<typeof mult
             async function UploadController_uploadFile(request: ExRequest, response: ExResponse, next: any) {
             const args: Record<string, TsoaRoute.ParameterSchema> = {
                     file: {"in":"formData","name":"file","required":true,"dataType":"file"},
+                    name: {"in":"formData","name":"name","required":true,"dataType":"string"},
+                    email: {"in":"formData","name":"email","required":true,"dataType":"string"},
             };
 
             // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa

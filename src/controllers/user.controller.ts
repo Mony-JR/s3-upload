@@ -1,13 +1,14 @@
 import { Controller, Route, Post, Get, Body, Put, Path, Delete, Query } from 'tsoa';
 import { UserService } from '../services/user-service';
 import { UserServicePrams, UserServicetype } from '../services/type';
+import { UserRequest } from '../services/s3-type';
 
 @Route("/v1/users")
 export class UserController extends Controller {
     private userService: UserService = new UserService();
 
     @Post("/")
-    public async createNewUser(@Body() requestBody: UserServicePrams): Promise<UserServicetype | null> {
+    public async createNewUser(@Body() requestBody:UserRequest): Promise<UserServicetype | null> {
         return this.userService.createUser(requestBody);
     }
 
@@ -41,4 +42,5 @@ export class UserController extends Controller {
     public helloJest(): string {
         return "Hello Jest Deloy v2 new API DOC";
     }
+    
 }

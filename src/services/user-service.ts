@@ -1,5 +1,6 @@
 // src/services/userService.ts
 
+import { UserCreationParams } from "../Models/user";
 import { UserRepo } from "../user Repo/user.repo";
 import { UserServicePrams } from "./type";
 
@@ -13,7 +14,7 @@ export class UserService extends UserRepo  {
         return this.useReop.getUsers(page,limit,ageMin,ageMax,nameUser,sort)
     }
 
-    async createUser(userCreationParams: UserServicePrams): Promise<any|null> {
+    async createUser(userCreationParams: UserCreationParams): Promise<any|null> {
         const newUser = this.useReop.createUser(userCreationParams);
         return newUser;
     }

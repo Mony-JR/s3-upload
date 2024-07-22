@@ -27,12 +27,42 @@
 				"type": "object",
 				"additionalProperties": false
 			},
+			"UserCreationParams": {
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"email": {
+						"type": "string"
+					},
+					"file": {
+						"type": "string"
+					}
+				},
+				"type": "object",
+				"additionalProperties": false
+			},
 			"UserServicePrams": {
 				"properties": {
 					"name": {
 						"type": "string"
 					},
 					"email": {
+						"type": "string"
+					}
+				},
+				"type": "object",
+				"additionalProperties": false
+			},
+			"UserRequest": {
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"email": {
+						"type": "string"
+					},
+					"file": {
 						"type": "string"
 					}
 				},
@@ -78,7 +108,7 @@
 					"content": {
 						"application/json": {
 							"schema": {
-								"$ref": "#/components/schemas/UserServicePrams"
+								"$ref": "#/components/schemas/UserCreationParams"
 							}
 						}
 					}
@@ -292,7 +322,12 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/UserRequest"
+										}
+									],
+									"nullable": true
 								}
 							}
 						}
@@ -310,10 +345,18 @@
 									"file": {
 										"type": "string",
 										"format": "binary"
+									},
+									"name": {
+										"type": "string"
+									},
+									"email": {
+										"type": "string"
 									}
 								},
 								"required": [
-									"file"
+									"file",
+									"name",
+									"email"
 								]
 							}
 						}

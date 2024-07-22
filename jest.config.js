@@ -2,7 +2,7 @@ module.exports = {
   preset: 'ts-jest',
   testEnvironment: 'node',
   testMatch: [
-    '<rootDir>/src/**/__test__/*.ts',
+    '<rootDir>/src/__test__/*.test.ts',
     '**/?(*.)+(spec|test).ts'
   ],
   coverageDirectory: 'coverage',
@@ -22,4 +22,5 @@ module.exports = {
   },
   coverageReporters: ['text-summary', 'lcov'],
   moduleFileExtensions: ['ts', 'js'],
+  setupFiles: ["<rootDir>/src/__test__/setup.ts"], // Add this line to load setup file
 };
