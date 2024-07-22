@@ -23,9 +23,9 @@ function loadConfig(): Config {
     NODE_ENV: yup.string().oneOf(['development', 'production', 'test']).default('development'),
     PORT: yup.number().default(3000),
     MONGODB_URL: yup.string().required(),
-    AWS_RIGOIN: yup.string().required(),
+    AWS_REGOIN: yup.string().required(),
     AWS_ACCESS_KEY_ID: yup.string().required(),
-    AWS_SICRETKEY: yup.string().required(),
+    AWS_SECRETKEY: yup.string().required(),
   }).required();
 
   // Validate the environment variables
@@ -40,9 +40,9 @@ function loadConfig(): Config {
     env: envVars.NODE_ENV,
     port: envVars.PORT,
     mongodbUrl: envVars.MONGODB_URL,
-    region: envVars.AWS_RIGOIN,
+    region: envVars.AWS_REGOIN,
     keyId: envVars.AWS_ACCESS_KEY_ID,
-    keySecret: envVars.AWS_SICRETKEY,
+    keySecret: envVars.AWS_SECRETKEY,
 
   };
 }
