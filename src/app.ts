@@ -33,6 +33,4 @@ app.use("/", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 // ========================
 
 
-
-
 export default app;
