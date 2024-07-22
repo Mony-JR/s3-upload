@@ -112,12 +112,5 @@ jobs:
     
                 # Debug: List files after installation
                 ls -la
-    
-                # Check if the PM2 process is running
-                SERVICE_NAME="s3"
-                if pm2 show $SERVICE_NAME > /dev/null; then
-                  echo "Application is running. Restarting..."
-                  pm2 restart $SERVICE_NAME
-                else
                   echo "Application is not running. Starting..."
                   pm2 start build/server.js --name $SERVICE_NAME
