@@ -32,9 +32,9 @@ jobs:
 
       - name: Run tests
         env:
-          AWS_REGION: ${{ secrets.AWS_REGION }}
+          AWS_REGOIN: ${{ secrets.AWS_REGION }}
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_SECRETKEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           MONGODB_URL: ${{ secrets.MONGODB_URL }}
         run: yarn test
 
@@ -93,7 +93,7 @@ jobs:
           port: 22
           script: |
             echo "NODE_ENV=production" > /home/ubuntu/UploadsFile/API_Test/build/.env
-            echo "PORT=your_port_number" >> /home/ubuntu/UploadsFile/API_Test/build/configs.env.production
+            echo "PORT=your_port_number" >> /home/ubuntu/UploadsFile/build/configs.env.production
             echo "DATABASE_URL=your_database_url" >> /home/ubuntu/UploadsFile/API_Test/build/configs.env.production
 
       - name: Install Dependencies and Restart Application
@@ -104,20 +104,20 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           port: 22
           script: |
-            source /home/ubuntu/.nvm/nvm.sh
-            source /home/ubuntu/.profile
-            cd /home/ubuntu/UploadsFile/API_Test/build
-
-            yarn install --production
-
-            # Debug: List files after installation
-            ls -la
-
-            # Check if the PM2 process is running
-            SERVICE_NAME="API_Test"
-            if pm2 show $SERVICE_NAME > /dev/null; then
-              echo "Application is running. Restarting..."
-              pm2 restart $SERVICE_NAME
-            else
-              echo "Application is not running. Starting..."
-              pm2 start build/server.js --name $SERVICE_NAME
+                source /home/ubuntu/.nvm/nvm.sh
+                source /home/ubuntu/.profile
+                cd /home/ubuntu/UploadsFile/API_Test/build
+    
+                yarn install --production
+    
+                # Debug: List files after installation
+                ls -la
+    
+                # Check if the PM2 process is running
+                SERVICE_NAME="API_Test"
+                if pm2 show $SERVICE_NAME > /dev/null; then
+                  echo "Application is running. Restarting..."
+                  pm2 restart $SERVICE_NAME
+                else
+                  echo "Application is not running. Starting..."
+                  pm2 start build/server.js --name $SERVICE_NAME
