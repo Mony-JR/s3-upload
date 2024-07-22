@@ -93,7 +93,7 @@ jobs:
           port: 22
           script: |
             echo "NODE_ENV=production" > /home/ubuntu/UploadsFile/API_Test/build/.env
-            echo "PORT=your_port_number" >> /home/ubuntu/Project/UploadsFile/build/configs.env.production
+            echo "PORT=your_port_number" >> /home/ubuntu/UploadsFile/build/configs.env.production
             echo "DATABASE_URL=your_database_url" >> /home/ubuntu/UploadsFile/API_Test/build/configs.env.production
 
       - name: Install Dependencies and Restart Application
