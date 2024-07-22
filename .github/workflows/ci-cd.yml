@@ -70,8 +70,8 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           port: 22
           script: |
-            mkdir -p /home/ubuntu/UploadsFile/API_Test/build
-            mkdir -p /home/ubuntu/UploadsFile/API_Test/build/configs
+            mkdir -p /home/ubuntu/UploadsFile/s3/build
+            mkdir -p /home/ubuntu/UploadsFile/s3/build/configs
 
       - name: Copy files to Server
         uses: appleboy/scp-action@master
@@ -81,7 +81,7 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           port: 22
           source: "./build/*"
-          target: "/home/ubuntu/UploadsFile/API_Test/build"
+          target: "/home/ubuntu/UploadsFile/s3/build"
           strip_components: 1
 
       - name: Create .env File
@@ -92,9 +92,9 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           port: 22
           script: |
-            echo "NODE_ENV=production" > /home/ubuntu/UploadsFile/API_Test/build/.env
-            echo "PORT=your_port_number" >> /home/ubuntu/UploadsFile/build/configs.env.production
-            echo "DATABASE_URL=your_database_url" >> /home/ubuntu/UploadsFile/API_Test/build/configs.env.production
+            echo "NODE_ENV=production" > /home/ubuntu/UploadsFile/s3/build/.env
+            echo "PORT=your_port_number" >> /home/ubuntu/UploadsFile/s3/build/configs.env.production
+            echo "DATABASE_URL=your_database_url" >> /home/ubuntu/UploadsFile/s3/build/configs.env.production
 
       - name: Install Dependencies and Restart Application
         uses: appleboy/ssh-action@master
@@ -106,7 +106,7 @@ jobs:
           script: |
                 source /home/ubuntu/.nvm/nvm.sh
                 source /home/ubuntu/.profile
-                cd /home/ubuntu/UploadsFile/API_Test/build
+                cd /home/ubuntu/UploadsFile/s3/build
     
                 yarn install --production
     
@@ -114,7 +114,7 @@ jobs:
                 ls -la
     
                 # Check if the PM2 process is running
-                SERVICE_NAME="API_Test"
+                SERVICE_NAME="s3"
                 if pm2 show $SERVICE_NAME > /dev/null; then
                   echo "Application is running. Restarting..."
                   pm2 restart $SERVICE_NAME
