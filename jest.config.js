@@ -22,5 +22,5 @@ module.exports = {
   },
   coverageReporters: ['text-summary', 'lcov'],
   moduleFileExtensions: ['ts', 'js'],
-  setupFiles: ["<rootDir>/src/__test__/setup.ts"], // Add this line to load setup file
+  // setupFiles: ["<rootDir>/src/__test__/setup.ts"], // Add this line to load setup file
 };

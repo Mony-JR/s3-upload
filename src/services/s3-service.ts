@@ -1,13 +1,14 @@
 import { PutObjectCommand, S3Client } from '@aws-sdk/client-s3';
 import { s3Repo } from '../user Repo/s3.repo';
 import { UserRequest } from './s3-type';
-import configsS3 from '../s3';
+import config from '../config';
+
 
 const s3 = new S3Client({
-    region: configsS3.region,
+    region: config.region,
     credentials: {
-        accessKeyId: configsS3.keyId,
-        secretAccessKey: configsS3.keySecret,
+        accessKeyId: config.keyId,
+        secretAccessKey: config.keySecret,
     }
 });
 
